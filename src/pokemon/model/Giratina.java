@@ -9,7 +9,7 @@ public Giratina(int number, String name)
 	
 	public void boo()
 	{
-		
+		System.out.println("Boo XD");
 	}
 	public int ghostyLevel()
 	{
