@@ -1,8 +1,8 @@
 package pokemon.model;
 
-public class Groudon extends Pokemon implements Ghosty
+public class Rayquaza extends Pokemon implements Ghosty
 {
-	public Groudon(int number, String name)
+	public Rayquaza(int number, String name)
 	{
 		super(number, name);
 	}
