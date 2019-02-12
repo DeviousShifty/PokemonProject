@@ -9,5 +9,5 @@ import pokemon.controller.*;
 
 public class PokedexFrame 
 {
-	private 
+	
 }
