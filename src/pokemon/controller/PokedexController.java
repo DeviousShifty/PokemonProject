@@ -17,7 +17,7 @@ public PokedexController()
 }
 private void addPokemon()
 {
-	pokemonList.add(Rayquaza());
+	pokemonList.add(newEevee());
 	pokemonList.add(new Magnemite());
 }
 public void start()
@@ -26,6 +26,7 @@ public void start()
 }
 public ArrayList<Pokemon> getPokemonList()
 {
+	return pokemonList;
 	
 }
 public void updatePokemon(int index, String [] data)
