@@ -11,7 +11,7 @@ public class PokedexPanel extends JPanel
 	private SpringLayout appLayout;
 	
 	private JButton changeButton;
-	private JComboBox pokedexDropdown;
+	private JComboBox<String> pokedexDropdown;
 	
 	private JTextField numberField;
 	private JTextField nameField;
@@ -49,7 +49,7 @@ public class PokedexPanel extends JPanel
 		imageLabel = new JLabel ("pokemon goes here");
 		
 		changeButton = new JButton ("Click here to change the pokevalues");
-		pokedexDropdown = new JComboBox(); //stub
+		pokedexDropdown = new JComboBox<String>(); //stub
 		
 		setupPanel();
 		setupLayout();
@@ -58,14 +58,25 @@ public class PokedexPanel extends JPanel
 	private void setupPanel()
 	{
 		SpringLayout appLayout = new SpringLayout();
-	
-	
+	this.setLayout(appLayout);
+	this.add(pokedexDropdown);
+	this.add(healthField);
+	this.add(evolveField);
+	this.add(enhancementField);
+	this.add(attackField);
+	this.add(nameField);
 	
 	}
 	private void setupLayout()
 	{
-		
-	}
+		this.appLayout = new SpringLayout();
+		numberField = new JTextField("0");
+		nameField = new JTextField("My Pokename");
+		evolveField = new JTextField("false");
+		attackField = new JTextField("0");
+		enhancementField = new JTextField("0");
+		healthField = new JTextField("0");
+		}
 	private void setupListeners()
 	{
 		changeButton.addActionListener(new ActionListener()
@@ -75,5 +86,10 @@ public class PokedexPanel extends JPanel
 				
 			}
 		});
+	}
+	private void setupDropdown()
+	{
+		DefaultComboBoxModel<String> temp = new DefaultComboBoxModel<String>((String[]) app.buildPokedexText());
+		pokedexDropdown.setModel(temp);
 	}
 }
