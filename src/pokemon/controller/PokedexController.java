@@ -19,8 +19,8 @@ public PokedexController()
 }
 private void addPokemon()
 {
-	pokemonList.add(newEevee());
-	pokemonList.add(new Magnemite());
+	pokemonList.add(new Giratina());
+	pokemonList.add(new Rayquaza());
 }
 public void start()
 {
