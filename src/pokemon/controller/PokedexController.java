@@ -1,5 +1,7 @@
 package pokemon.controller;
 import java.util.ArrayList;
+import java.util.function.BooleanSupplier;
+
 import javax.swing.JOptionPane;
 import pokemon.view.PokedexFrame;
 import pokemon.model.*;
@@ -29,6 +31,20 @@ public ArrayList<Pokemon> getPokemonList()
 	return pokemonList;
 	
 }
+public boolean isInt(String text)
+{
+	try
+	{
+		Integer.parseInt(text);
+		return true;
+	}
+	catch(NumberFormatException error)
+	{
+		JOptionPane.showInputDialog(appFrame, "You need to use a double value");
+	}
+	return false;
+}
+
 public void updatePokemon(int index, String [] data)
 {
 	if(data.length == 5)
@@ -54,4 +70,13 @@ names[index] = pokemonList.get(index).getName();
 }
 return names;
 	}
+public Object getFrame() {
+	// TODO Auto-generated method stub
+	return null;
+}
+public BooleanSupplier isDouble(String string) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
 }
