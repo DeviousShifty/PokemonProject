@@ -104,7 +104,7 @@ public class PokedexPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent Click)
 			{
-				
+				sendDataToController();
 			}
 		});
 	}
@@ -140,5 +140,14 @@ public class PokedexPanel extends JPanel
 		imageLabel.setIcon(pokemonIcon);
 		repaint();
 	}
-	
+	{
+	pokedexDropdown.addActionListener(new ActionListener()
+	{
+		public void actionPerformed(ActionEvent selection)
+		{
+			String name = pokedexDropdown.getSelectedItem().toString();
+			changeImageDisplay(name);
+		}
+			});
+}
 }
