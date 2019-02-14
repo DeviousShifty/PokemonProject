@@ -32,11 +32,15 @@ public class PokedexPanel extends JPanel
 	private JLabel imageLabel;
 	private JLabel nameLabel;
 	
+	private ImageIcon pokemonIcon;
 	
 	public PokedexPanel(PokedexController app)
 	{
 		super();
 		this.app = app;
+		
+		this.appLayout = new SpringLayout();
+		this.pokemonIcon = new ImageIcon(getClass().getResource("/pokemon/view/images/mega rayquaza.png"));
 		
 		numberField = new JTextField("0");
 		nameField_1 = new JTextField("0");
@@ -50,7 +54,7 @@ public class PokedexPanel extends JPanel
 		attackLabel = new JLabel ("This pokemon attack level is");
 		enhanceLabel = new JLabel ("this pokemon enhancement level is");
 		nameLabel = new JLabel ("My name is");
-		imageLabel = new JLabel ("pokemon goes here");
+		imageLabel = new JLabel ("pokemon goes here", pokemonIcon, JLabel.CENTER);
 		
 		changeButton = new JButton ("Click here to change the pokevalues");
 		pokedexDropdown = new JComboBox<String>(); //stub
@@ -62,25 +66,27 @@ public class PokedexPanel extends JPanel
 	private void setupPanel()
 	{
 		SpringLayout appLayout = new SpringLayout();
-		appLayout.putConstraint(SpringLayout.WEST, nameField_1, 0, SpringLayout.WEST, pokedexDropdown);
-		appLayout.putConstraint(SpringLayout.WEST, enhancementField_1, 0, SpringLayout.WEST, pokedexDropdown);
-		appLayout.putConstraint(SpringLayout.WEST, evolveField_1, 0, SpringLayout.WEST, pokedexDropdown);
-		appLayout.putConstraint(SpringLayout.WEST, healthField_1, 0, SpringLayout.WEST, pokedexDropdown);
-		appLayout.putConstraint(SpringLayout.EAST, healthField_1, -302, SpringLayout.EAST, this);
-		appLayout.putConstraint(SpringLayout.SOUTH, enhancementField_1, -29, SpringLayout.SOUTH, this);
+		appLayout.putConstraint(SpringLayout.WEST, nameField, 0, SpringLayout.WEST, pokedexDropdown);
+		appLayout.putConstraint(SpringLayout.WEST, enhancementField, 0, SpringLayout.WEST, pokedexDropdown);
+		appLayout.putConstraint(SpringLayout.WEST, evolveField, 0, SpringLayout.WEST, pokedexDropdown);
+		appLayout.putConstraint(SpringLayout.WEST, healthField, 0, SpringLayout.WEST, pokedexDropdown);
+		appLayout.putConstraint(SpringLayout.EAST, healthField, -302, SpringLayout.EAST, this);
+		appLayout.putConstraint(SpringLayout.SOUTH, enhancementField, -29, SpringLayout.SOUTH, this);
 		appLayout.putConstraint(SpringLayout.WEST, pokedexDropdown, 123, SpringLayout.WEST, this);
 		appLayout.putConstraint(SpringLayout.SOUTH, pokedexDropdown, -83, SpringLayout.SOUTH, this);
-		appLayout.putConstraint(SpringLayout.NORTH, healthField_1, 136, SpringLayout.NORTH, this);
-		appLayout.putConstraint(SpringLayout.NORTH, nameField_1, 82, SpringLayout.NORTH, this);
-		appLayout.putConstraint(SpringLayout.NORTH, evolveField_1, 28, SpringLayout.NORTH, this);
+		appLayout.putConstraint(SpringLayout.NORTH, healthField, 136, SpringLayout.NORTH, this);
+		appLayout.putConstraint(SpringLayout.NORTH, nameField, 82, SpringLayout.NORTH, this);
+		appLayout.putConstraint(SpringLayout.NORTH, evolveField, 28, SpringLayout.NORTH, this);
 	this.setLayout(appLayout);
 	this.add(pokedexDropdown);
 	this.add(healthField);
-	this.add(evolveField_1);
-	this.add(enhancementField_1);
+	this.add(evolveField);
+	this.add(enhancementField);
 	this.add(attackField);
-	this.add(nameField_1);
+	this.add(nameField);
 	
+	imageLabel.setVerticalTextPosition(JLabel.BOTTOM);
+	imageLabel.setHorizontalTextPosition(JLabel.CENTER);
 	}
 	private void setupLayout()
 	{
@@ -107,4 +113,32 @@ public class PokedexPanel extends JPanel
 		DefaultComboBoxModel<String> temp = new DefaultComboBoxModel<String>((String[]) app.buildPokedexText());
 		pokedexDropdown.setModel(temp);
 	}
+	private void sendDataToController()
+	{
+		int index = pokedexDropdown.getSelectedIndex();
+		
+		if(app.isInt(attackField.getText())&& app.isDouble(enhancementField.getText())&& app.isInt(healthField.getText()))
+		{
+			String [] data = new String[5];
+			
+			app.updatePokemon(index, data);
+		}
+	}
+	private void changeImageDisplay(String name)
+	{
+		String path = "/pokemon/view/images/";
+		String defaultName = "mega rayquaza";
+		String extension = ".png";
+		try
+		{
+			pokemonIcon = new ImageIcon(getClass().getResource(path + name.toLowerCase()+ extension));
+		}
+		catch (NullPointerException missingFile)
+		{
+			pokemonIcon = new ImageIcon(getClass().getResource(path + defaultName + extension));
+		}
+		imageLabel.setIcon(pokemonIcon);
+		repaint();
+	}
+	
 }

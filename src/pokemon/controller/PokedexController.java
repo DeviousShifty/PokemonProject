@@ -19,8 +19,8 @@ public PokedexController()
 }
 private void addPokemon()
 {
-	pokemonList.add(new Giratina());
-	pokemonList.add(new Rayquaza());
+	pokemonList.add(new Giratina(0,null));
+	pokemonList.add(new Rayquaza(0,null));
 }
 public void start()
 {
@@ -40,7 +40,7 @@ public boolean isInt(String text)
 	}
 	catch(NumberFormatException error)
 	{
-		JOptionPane.showInputDialog(appFrame, "You need to use a double value");
+		JOptionPane.showInputDialog(appFrame, "You need to use a double value"); //Change input to message if incorrect
 	}
 	return false;
 }
