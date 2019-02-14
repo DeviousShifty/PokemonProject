@@ -117,7 +117,7 @@ public class PokedexPanel extends JPanel
 	{
 		int index = pokedexDropdown.getSelectedIndex();
 		
-		if(app.isInt(attackField.getText())&& app.isDouble(enhancementField.getText())&& app.isInt(healthField.getText()))
+		//if(app.isInt(attackField.getText())&& app.isDouble(enhancementField.getText())&& app.isInt(healthField.getText()))
 		{
 			String [] data = new String[5];
 			
