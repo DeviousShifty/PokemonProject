@@ -1,14 +1,18 @@
 package pokemon.controller;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.function.BooleanSupplier;
 
 import javax.swing.JOptionPane;
 import pokemon.view.PokedexFrame;
-import sun.util.logging.PlatformLogger;
+//import sun.util.logging.PlatformLogger;
 import pokemon.model.*;
 
 public class PokedexController 
 {
+private static final String PlatformLogger = null;
 private ArrayList<Pokemon> pokemonList;
 private PokedexFrame appFrame;
 
@@ -48,7 +52,40 @@ public boolean isInt(String text)
 	return false;
 }
 
-public void updatePokemon(int index, String [] data)
+public void updatePokemon(int index, String [] data) 
+{
+	if(data.length == 5)
+	{
+		Pokemon current = pokemonList.get(index);
+		current.setAttackPoints(Integer.parseInt(data[0]));
+		current.setEnhancementModifier(Double.parseDouble(data[1]));
+		current.setHealthPoints(Integer.parseInt(data[2]));
+		current.setName(data[3]);
+		current.setCanEvolve(Boolean.parseBoolean(data[4]));
+	}
+}
+
+public void savePokedex()
+{
+	try
+	{
+		String saveFile;
+		FileOutputStream saveStream = new FileOutputStream(saveFile);
+		ObjectOutputStream output = new ObjectOutputStream(saveStream);
+		output.writeObject(pokemonList);
+		output.close();
+		saveStream.close();
+	}
+	catch(IOException error)
+	{
+		JOptionPane.showMessageDialog(appFrame, error.getMessage(), "FileError", JOptionPane.ERROR_MESSAGE);
+	}
+}
+
+
+
+
+
 
 public String [] getPokeData(int index)
 {
@@ -85,10 +122,15 @@ public BooleanSupplier isDouble(String string) {
 
 private void processException(Throwable e) 
 {
+	Object eventLog;
 	if(eventLog. isLoggable(PlatformLogger.Level.FINE))
 	{
 		eventLog.fine("Processing exeption: "+ e);
 	}
 	getUncaughtExceptionHandler().uncaughtException(this, e);
+}
+private Object getUncaughtExceptionHandler() {
+	// TODO Auto-generated method stub
+	return null;
 }
 }
