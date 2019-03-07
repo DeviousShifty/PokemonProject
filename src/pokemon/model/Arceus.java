@@ -19,7 +19,8 @@ public int Attackpower()
 }
 
 
-public void Bind() {
+public void Bind() 
+{
 
 	
 }
