@@ -1,18 +1,27 @@
 package pokemon.model;
 
 
-public abstract class Arceus extends Pokemon implements Normal
+public class Arceus extends Pokemon implements Normal
 {
-public Arceus()
+public Arceus(int number, String name)
 {
-	super(100,"Arceus");
+	super(number, name);
 }
-public Arceus(String name)
+
+
+public void bind()
 {
-	super(100, name);
+	System.out.println("Slash XD");
 }
-public Arceus(int num, String name)
+public int Attackpower()
 {
-	super(num, name);
+	return 1000;
 }
+
+
+public void Bind() {
+
+	
+}
+
 }

@@ -20,14 +20,15 @@ public PokedexController()
 {
 	pokemonList = new ArrayList<Pokemon>();
 	addPokemon();
-	appFrame = new PokedexFrame(this);
+	appFrame = new PokedexFrame();
 }
 private void addPokemon()
 {
 	pokemonList.add(new Giratina(0,null));
 	pokemonList.add(new Rayquaza(0,null));
 	pokemonList.add(new Ditto(0, null));
-	//pokemonList.add(new Arceus(0, null));
+	pokemonList.add(new Arceus(0,null));
+	
 }
 public void start()
 {
