@@ -8,26 +8,13 @@ import java.awt.event.ActionEvent;
 import javax.swing.*;
 import pokemon.controller.*;
 
-public class PokedexFrame 
+public class PokedexFrame extends JFrame
 {
 
-	public PokedexFrame(PokedexController pokedexController) {
-		// TODO Auto-generated constructor stub
+	public static void main(String args[])
+	{
+		JFrame frame = new JFrame("PokemonFrame");
+				frame.setTitle("PokemonFrame");
+		frame.setSize(300, 200);;
 	}
-
-	public Object getTitle() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public BooleanSupplier isResizable() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public PokedexPanel getContentPane() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 }

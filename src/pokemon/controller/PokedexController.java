@@ -69,7 +69,7 @@ public void savePokedex()
 {
 	try
 	{
-		String saveFile;
+		String saveFile = null;
 		FileOutputStream saveStream = new FileOutputStream(saveFile);
 		ObjectOutputStream output = new ObjectOutputStream(saveStream);
 		output.writeObject(pokemonList);
@@ -78,7 +78,7 @@ public void savePokedex()
 	}
 	catch(IOException error)
 	{
-		JOptionPane.showMessageDialog(appFrame, error.getMessage(), "FileError", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showInputDialog(appFrame);
 	}
 }
 
@@ -119,18 +119,6 @@ public BooleanSupplier isDouble(String string) {
 	// TODO Auto-generated method stub
 	return null;
 }
+//insert process Exception
 
-private void processException(Throwable e) 
-{
-	Object eventLog;
-	if(eventLog. isLoggable(PlatformLogger.Level.FINE))
-	{
-		eventLog.fine("Processing exeption: "+ e);
-	}
-	getUncaughtExceptionHandler().uncaughtException(this, e);
-}
-private Object getUncaughtExceptionHandler() {
-	// TODO Auto-generated method stub
-	return null;
-}
 }
